@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Promise example</title>
+
+    <link rel="stylesheet" href="">
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <h1>Ejemplo de promesas</h1>
+
+    <p>Imagen de Darth Vader provista por<a href="https://www.flickr.com/photos/digital_stability/">Shawn Taylor</a>, publicada bajo la licencia <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/">Attribution-NonCommercial-NoDerivs 2.0 Generic</a></p>
+  </body>
+
+  <script>
+  function imgLoad(url) {
+    /*
+     * Se crea una nueva promesa con el constructor Promise(), el cual tiene como argumento una función con dos parámetros: 
+     * @resolve
+     * @reject
+    **/
+    return new Promise(function(resolve, reject) {
+      //Objeto XHR estándar para cargar una imagen
+      var request = new XMLHttpRequest();
+      request.open('GET', url);
+      request.responseType = 'blob';
+      //Cuando la solicitud se carga, verifica si ha sido exitoso
+      request.onload = function() {
+        if (request.status === 200) {
+        // Si ha sido exitoso, se resuelve la promesa devolviendo la respuesta de la solicitud: request.response   
+          resolve(request.response);
+        } else {
+        // Si falla, se rechaza la promesa con un mensaje de error.
+          reject(Error('La imagen no se ha cargado exitosamente; código de error:' + request.statusText));
+        }
+      };
+      request.onerror = function() {
+      /*
+       * Además se contola el caso cuando la solicitud completa falla al inicializarse.
+       * Esto puede deberse a errores de conectividad, entonces se rechaza la promesa con un mensaje apropiado.
+      */
+          reject(Error('Ha ocurrido un error de conectividad.'));
+      };
+      // Se envía la solicitud
+      request.send();
+    });
+  }
+  // Se obtiene una referencia al elemento body y se crea un nuevo objeto de imagen.
+  var body = document.querySelector('body');
+  var myImage = new Image();
+  // Se llama a la función con la URL que queremos cargar, pero se le agrega la función then() al final. El cual contiene dos callbacks.
+  imgLoad('myLittleVader.jpg').then(function(response) {
+    // El primero se ejecuta cuando la promesa se resuelve, con request.response especificado en el método resolve()
+    var imageURL = window.URL.createObjectURL(response);
+    myImage.src = imageURL;
+    body.appendChild(myImage);
+    // El segundo se ejecuta cuando la promesa es rechazada, lo cual imprimirá por consola el error especificado con el método reject()
+  }, function(Error) {
+    console.log(Error);
+  });
+  </script>
