@@ -22,7 +22,6 @@ export class RazasService {
 
     getImagesByBreed(breed: string) {
         this.url = 'https://dog.ceo/api/breed/'+ breed+'/images';
-        console.log(this.url);
         let response = this._http.get(this.url);
         let responseAsObjet = response.map(res => res.json());
         return responseAsObjet;

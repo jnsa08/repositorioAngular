@@ -53,3 +53,34 @@ ul{
     border-radius: 4px 0 0 4px;
   }
 
+
+  div.gallery {
+    border: 1px solid #ccc;
+}
+
+div.gallery:hover {
+    border: 1px solid #777;
+}
+
+div.gallery img {
+    position: relative;
+    float: left;
+    max-height: 100px;
+    max-width: 100%;
+
+    width:  100px;
+    height: 100px;
+    background-position: 50% 50%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
+}
+
+.responsive {
+    padding: 0 6px;
+    float: left;
+    
+}
+
+td {
+  vertical-align: top;
+}

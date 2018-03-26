@@ -1,8 +1,26 @@
-<h2>Razas Locales</h2>
+<table>
+    <thead>
+        <tr>
+            <th>
+                <h2>Razas Locales</h2>
+            </th>
+            <th>
+            </th>
+        </tr>
+    </thead>
 
-<ul class="breeds">
-    <li *ngFor="let breed of breeds" [class.selected]="breed === selectedBreed" (click)="onSelect(breed)">
-        <span class="badge">¬</span>{{breed.breed}}
-    </li>
-</ul>
-<app-image-detail-breed [breed]="selectedBreed"></app-image-detail-breed>
+    <tbody>
+        <td>
+            <ul class="breeds">
+                <li *ngFor="let breed of breeds" [class.selected]="breed === selectedBreed" (click)="onSelect(breed)">
+                    <span class="badge">¬</span>{{breed.breed}}
+                </li>
+            </ul>
+        </td>
+
+        <td>
+            <app-image-detail-breed [breed]="selectedBreed"></app-image-detail-breed>
+        </td>
+
+    </tbody>
+</table>

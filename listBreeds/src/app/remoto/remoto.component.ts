@@ -16,6 +16,7 @@ export class RemotoComponent implements OnInit {
   selectedBreed: Breed;
   selectedString: string;
   breeds = Breeds;
+  breedsImages = Breeds;
 
   response
 
@@ -45,9 +46,9 @@ onSelect(breed: string): void {
 
   this._request.getImagesByBreed(breed).subscribe(
     result => {
-      this.breeds = result;
+      this.breedsImages = result;
 
-      if (!this.breeds) {
+      if (!this.breedsImages) {
         console.log('Server error');
       }
     },

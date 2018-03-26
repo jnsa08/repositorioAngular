@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Breed } from '../breed';
+import { Breeds } from '../response';
 
 
 @Component({
@@ -9,7 +10,9 @@ import { Breed } from '../breed';
 })
 export class ImageDetailBreedComponent implements OnInit {
 
-  @Input() breed: Breed;;
+  @Input() breed: Breed;
+
+ // @Input() breedImg: Breeds;
 
   constructor() { }
 

@@ -1,7 +1,31 @@
-<h2>Razas Remotas</h2>
-<ul class="breeds">
-    <li *ngFor="let breed of breeds.message" [class.selected]="breed === selectedBreed" (click)="onSelect(breed)">
-        <span class="badge">¬</span>{{breed}}
-    </li>
-</ul>
-<app-image-detail-breed [breed]="selectedBreed"></app-image-detail-breed>
+<table>
+  <thead>
+    <tr>
+      <th>
+        <h2>Razas Remotas</h2>
+      </th>
+      <th>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <td>
+      <ul class="breeds">
+        <li *ngFor="let breed of breeds.message" [class.selected]="breed === selectedBreed" (click)="onSelect(breed)">
+          <span class="badge">¬</span>{{breed}}
+        </li>
+      </ul>
+    </td>
+    <td>
+      <div *ngIf="breedsImages">
+        <div class="responsive" *ngFor="let img of breedsImages.message">
+          <div class="gallery">
+            <a target="_blank" href={{img}}>
+              <img src={{img}}>
+            </a>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tbody>
+</table>

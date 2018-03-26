@@ -1,5 +1,4 @@
 <div *ngIf="breed">
-  <h2>Imagenes de {{ breed.breed | uppercase }}</h2>
   <div class="responsive" *ngFor="let img of breed.listImages">
     <div class="gallery">
       <a target="_blank" href={{img}}>
