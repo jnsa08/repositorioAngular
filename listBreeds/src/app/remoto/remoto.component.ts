@@ -51,6 +51,8 @@ onSelect(breed: string): void {
       if (!this.breedsImages) {
         console.log('Server error');
       }
+      
+
     },
     error => {
       var errorMessage = <any>error;
@@ -58,11 +60,6 @@ onSelect(breed: string): void {
     }
 
   );
-
-
-
-
-
 }
 
 }
