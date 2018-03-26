@@ -5,10 +5,4 @@
         <span class="badge">¬</span>{{breed.breed}}
     </li>
 </ul>
-
-<div *ngIf="selectedBreed">
-
-    <label>Raza:
-        <input [(ngModel)]="selectedBreed.breed" placeholder="Nombre Raza">
-    </label>
-</div>
+<app-image-detail-breed [breed]="selectedBreed"></app-image-detail-breed>
